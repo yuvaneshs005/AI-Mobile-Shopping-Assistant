@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-heading">
+    <p class="eyebrow">Recommendation Results</p>
+    <h1>Top 5 phones for "{{ query }}"</h1>
+    <a class="text-link" href="{{ url_for('home') }}">Search again</a>
+</section>
+
+{% if message %}
+<p class="empty-state">{{ message }}</p>
+{% endif %}
+
+<section class="results-grid">
+    {% for phone in recommendations %}
+    <article class="phone-card {% if loop.first %}best-card{% endif %}">
+        {% if loop.first %}
+        <span class="badge">Best Match</span>
+        {% endif %}
+        <div class="card-head">
+            <div>
+                <p class="brand-name">{{ phone.brand }}</p>
+                <h2>{{ phone.model }}</h2>
+            </div>
+            <strong class="score">{{ phone.score }}%</strong>
+        </div>
+
+        <div class="price-row">
+            <span>{{ phone.price }}</span>
+            <small>Rating {{ phone.rating }}</small>
+        </div>
+
+        <dl class="spec-grid">
+            <div><dt>RAM</dt><dd>{{ phone.ram }}</dd></div>
+            <div><dt>Storage</dt><dd>{{ phone.storage }}</dd></div>
+            <div><dt>Battery</dt><dd>{{ phone.battery }}</dd></div>
+            <div><dt>Camera</dt><dd>{{ phone.camera }}</dd></div>
+        </dl>
+
+        <div class="reason-box">
+            <h3>Why recommended?</h3>
+            <ul>
+                {% for reason in phone.explanation %}
+                <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,392 @@
+:root {
+    --bg: #f6f8fb;
+    --ink: #14213d;
+    --muted: #5f6f89;
+    --line: #dce4ef;
+    --panel: #ffffff;
+    --accent: #0f766e;
+    --accent-dark: #115e59;
+    --gold: #f59e0b;
+    --soft: #e8f7f4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+}
+
+.topbar {
+    min-height: 70px;
+    padding: 0 7vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.brand {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a,
+.text-link {
+    color: var(--accent-dark);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+main {
+    padding: 42px 7vw 64px;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 42px;
+    align-items: center;
+    min-height: 520px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 0.78rem;
+}
+
+h1 {
+    margin: 10px 0 16px;
+    font-size: clamp(2rem, 4vw, 4.25rem);
+    line-height: 1.05;
+}
+
+.intro {
+    color: var(--muted);
+    max-width: 720px;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.search-panel,
+.compare-form,
+.phone-card,
+.comparison-table {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
+}
+
+.search-panel {
+    margin-top: 32px;
+    padding: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.search-row {
+    display: flex;
+    gap: 12px;
+}
+
+input,
+select {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    color: var(--ink);
+    background: white;
+}
+
+button {
+    border: 0;
+    border-radius: 6px;
+    padding: 14px 22px;
+    background: var(--accent);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+button:hover {
+    background: var(--accent-dark);
+}
+
+.phone-preview {
+    display: flex;
+    justify-content: center;
+}
+
+.mock-phone {
+    width: min(320px, 100%);
+    aspect-ratio: 9 / 16;
+    border-radius: 34px;
+    padding: 18px;
+    background: #182235;
+    box-shadow: 0 30px 70px rgba(20, 33, 61, 0.22);
+    border: 8px solid #0f172a;
+    display: flex;
+    align-items: end;
+}
+
+.mock-phone span {
+    position: absolute;
+}
+
+.screen-card {
+    width: 100%;
+    padding: 24px;
+    border-radius: 8px;
+    color: white;
+    background: linear-gradient(135deg, #0f766e, #164e63);
+}
+
+.screen-card p {
+    display: inline-block;
+    margin: 0 0 16px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    font-size: 0.82rem;
+}
+
+.screen-card h2 {
+    margin: 0 0 12px;
+    font-size: 1.55rem;
+}
+
+.examples {
+    margin-top: 34px;
+}
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.example-card {
+    width: 100%;
+    min-height: 92px;
+    color: var(--ink);
+    background: white;
+    border: 1px solid var(--line);
+    text-align: left;
+    box-shadow: none;
+}
+
+.example-card:hover {
+    color: white;
+    background: var(--accent);
+}
+
+.page-heading {
+    margin-bottom: 28px;
+}
+
+.page-heading h1 {
+    font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.phone-card {
+    position: relative;
+    padding: 24px;
+}
+
+.best-card {
+    border: 2px solid var(--gold);
+    background: #fffaf0;
+}
+
+.badge {
+    position: absolute;
+    right: 20px;
+    top: -14px;
+    background: var(--gold);
+    color: #422006;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+
+.card-head,
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.brand-name {
+    margin: 0;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.phone-card h2 {
+    margin: 6px 0 0;
+    font-size: 1.35rem;
+}
+
+.score {
+    color: var(--accent-dark);
+    background: var(--soft);
+    padding: 8px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.price-row {
+    margin: 20px 0;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.price-row span {
+    font-size: 1.35rem;
+    font-weight: 900;
+}
+
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+}
+
+dt {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+dd {
+    margin: 4px 0 0;
+    line-height: 1.45;
+}
+
+.reason-box {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    background: var(--soft);
+}
+
+.reason-box h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+}
+
+.reason-box ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+.compare-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 16px;
+    align-items: end;
+    padding: 22px;
+}
+
+.comparison-table {
+    margin-top: 28px;
+    overflow: hidden;
+}
+
+.compare-header,
+.compare-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+}
+
+.compare-header div {
+    background: var(--ink);
+    color: white;
+    font-weight: 900;
+}
+
+.compare-header div,
+.compare-row div {
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.compare-row div:first-child {
+    font-weight: 900;
+    color: var(--accent-dark);
+    background: #f8fafc;
+}
+
+.empty-state {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+}
+
+@media (max-width: 900px) {
+    .hero,
+    .results-grid,
+    .example-grid,
+    .compare-form {
+        grid-template-columns: 1fr;
+    }
+
+    .search-row,
+    .topbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .topbar {
+        padding: 16px 7vw;
+        gap: 12px;
+    }
+
+    nav {
+        justify-content: space-between;
+    }
+
+    .compare-header,
+    .compare-row {
+        grid-template-columns: 1fr;
+    }
+}

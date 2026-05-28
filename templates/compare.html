@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-heading">
+    <p class="eyebrow">Phone Comparison</p>
+    <h1>Compare two smartphones side by side.</h1>
+</section>
+
+<form class="compare-form" action="{{ url_for('compare') }}" method="POST">
+    <div>
+        <label for="phone_one">First phone</label>
+        <select id="phone_one" name="phone_one" required>
+            <option value="">Select phone</option>
+            {% for phone in phones %}
+            <option value="{{ phone }}" {% if phone == selected_one %}selected{% endif %}>{{ phone }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="phone_two">Second phone</label>
+        <select id="phone_two" name="phone_two" required>
+            <option value="">Select phone</option>
+            {% for phone in phones %}
+            <option value="{{ phone }}" {% if phone == selected_two %}selected{% endif %}>{{ phone }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit">Compare</button>
+</form>
+
+{% if phone_one and phone_two %}
+<section class="comparison-table">
+    <div class="compare-header">
+        <div>Feature</div>
+        <div>{{ phone_one.model }}</div>
+        <div>{{ phone_two.model }}</div>
+    </div>
+
+    {% set rows = [
+        ("Price", phone_one.price, phone_two.price),
+        ("Battery", phone_one.battery, phone_two.battery),
+        ("Camera", phone_one.camera, phone_two.camera),
+        ("RAM", phone_one.ram, phone_two.ram),
+        ("Storage", phone_one.storage, phone_two.storage),
+        ("Processor", phone_one.processor, phone_two.processor),
+        ("Rating", phone_one.rating, phone_two.rating)
+    ] %}
+
+    {% for label, first, second in rows %}
+    <div class="compare-row">
+        <div>{{ label }}</div>
+        <div>{{ first }}</div>
+        <div>{{ second }}</div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+{% endblock %}

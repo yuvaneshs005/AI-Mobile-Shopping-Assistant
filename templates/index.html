@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <p class="eyebrow">NLP-Based Smartphone Recommendation System</p>
+        <h1>Find the right phone by typing what you actually want.</h1>
+        <p class="intro">
+            Search naturally for budget, camera, gaming, battery, 5G, performance,
+            or brand preferences. The assistant ranks phones using spaCy,
+            Word2Vec Skip-gram, and cosine similarity.
+        </p>
+
+        <form class="search-panel" action="{{ url_for('recommend') }}" method="POST">
+            <label for="query">What kind of smartphone are you looking for?</label>
+            <div class="search-row">
+                <input
+                    id="query"
+                    name="query"
+                    type="text"
+                    placeholder="Example: Samsung phone under 25000 with good camera"
+                    required
+                >
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="phone-preview">
+        <div class="mock-phone">
+            <span></span>
+            <div class="screen-card">
+                <p>Best Match</p>
+                <h2>Smart recommendations</h2>
+                <small>Top 5 phones ranked by semantic similarity</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="examples">
+    <h2>Try example searches</h2>
+    <div class="example-grid">
+        {% for example in examples %}
+        <form action="{{ url_for('recommend') }}" method="POST">
+            <input type="hidden" name="query" value="{{ example }}">
+            <button class="example-card" type="submit">{{ example }}</button>
+        </form>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
